@@ -1,0 +1,34 @@
+---
+- name: Install Docker service and web server
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Start and enable Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Choose web server (comment out one)
+      # Install Apache
+      # apt:
+      #   name: apache2
+      #   state: present
+
+      # Install httpd
+      yum:
+        name: httpd
+        state: present
+
+    - name: Start and enable web server service
+      service:
+        name: apache2  # Change to httpd if using httpd
+        state: started
+        enabled: yes
+
