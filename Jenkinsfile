@@ -5,7 +5,7 @@ pipeline {
         stage('Install Ansible on node1') {
             agent any // Run this stage on any available Jenkins agent
             steps {
-                ssh(credentialsId: 'node1-credentials', label: 'node1', wait: true) { // Use credentials for node1
+                ssh(credentialsId: 'root/anusha@1993', label: 'node1', wait: true) { // Use credentials for node1
                     sh 'sudo apt update && sudo apt install -y ansible' // Install Ansible on node1
                 }
             }
